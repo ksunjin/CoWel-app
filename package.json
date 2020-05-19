@@ -8,7 +8,9 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "@material-ui/core": "^4.9.14",
     "@react-native-community/masked-view": "^0.1.10",
+    "@react-native-firebase/firestore": "^7.0.1",
     "@react-navigation/bottom-tabs": "^5.4.5",
     "@react-navigation/stack": "^5.3.3",
     "expo": "^37.0.11",
@@ -22,6 +24,8 @@
     "react-dom": "^16.13.1",
     "react-material-ui-form-validator": "^2.0.10",
     "react-native": "https://github.com/expo/react-native/archive/sdk-37.0.1.tar.gz",
+    "react-native-cardview": "^2.0.5",
+    "react-native-elements": "^2.0.0",
     "react-native-firebase": "^5.6.0",
     "react-native-gesture-handler": "^1.6.1",
     "react-native-ionicons": "^5.0.0-rc",
@@ -32,7 +36,8 @@
     "react-navigation": "^4.3.9",
     "react-navigation-stack": "^2.5.0",
     "react-navigation-tabs": "^2.8.13",
-    "reactstrap": "^8.4.1"
+    "reactstrap": "^8.4.1",
+    "expo-constants": "~9.0.0"
   },
   "devDependencies": {
     "babel-preset-expo": "~8.1.0",
@@ -56,8 +61,10 @@
   },
   "homepage": "https://github.com/ksunjin/CoWel-app#readme",
   "rnpm": {
+    "ios": {},
+    "android": {},
     "assets": [
-      "./assets/fonts"
+      "../assets/fonts"
     ]
   }
 }
