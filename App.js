@@ -8,7 +8,9 @@ import { createBottomTabNavigator } from 'react-navigation-tabs';
 import MainScreen from './Components/MainScreen';
 import LoadingScreen from './Components/LoadingScreen';
 import WelfareScreen from './Components/WelfareScreen';
+import SignUpScreen from './Components/SignUpScreen';
 import LoginScreen from './Components/LoginScreen';
+import SetProfileScreen from './Components/SetProfileScreen';
 import PersonalSearchTab from './Components/AppTabNavigator/PersonalSearchTab';
 import MyPageTab from './Components/AppTabNavigator/MyPageTab';
 
@@ -21,6 +23,16 @@ const MainStack = createStackNavigator({
   {
     defaultNavigationOptions: ({ navigation }) => ({
       title: 'Main'
+    }),
+  }
+);
+
+const SetProfileStack = createStackNavigator({
+  SetProfileScreen
+},
+  {
+    defaultNavigationOptions: ({ navigation }) => ({
+      title: 'SetProfile'
     }),
   }
 );
@@ -89,6 +101,8 @@ const BottomTab = createBottomTabNavigator({
 
 const AppStack = createStackNavigator({
   LoadingScreen: LoadingScreen,
+  SetProfileScreen: SetProfileScreen,
+  'SignUp': SignUpScreen,
   'Login': LoginScreen,
   BottomTab: {
     screen: BottomTab,

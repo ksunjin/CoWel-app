@@ -48,17 +48,25 @@ export default class Welfare extends Component {
                     this.state.data.map(value => {
                         return (
                             <Card style={styles.card_style}>
-
                                 <CardItem header>
-                                    <Text style={styles.welfare_text}>
-                                        {value.서비스명}
+                                    <Text style={styles.welfare_title}>
+                                        [{value.서비스명}]
                                     </Text>
                                 </CardItem>
                                 <CardItem>
-                                    <Text style={styles.welfare_text}>{value.구비서류}</Text>
+                                    <Text style={styles.welfare_text}>구비서류: {value.구비서류}</Text>
                                 </CardItem>
                                 <CardItem>
-                                    <Text style={styles.welfare_text}>{value.지원대상}</Text>
+                                    <Text style={styles.welfare_text}>지원대상: {value.지원대상}</Text>
+                                </CardItem>
+                                <CardItem>
+                                    <Text style={styles.welfare_text}>신청절차: {value.신청절차}</Text>
+                                </CardItem>
+                                <CardItem>
+                                    <Text style={styles.welfare_text}>문의처 명: {value.문의처명}</Text >
+                                </CardItem>
+                                <CardItem>
+                                    <Text style={styles.welfare_text}>문의처 전화번호: {value.문의처전화번호}</Text >
                                 </CardItem>
                             </Card>
 
@@ -83,6 +91,10 @@ const styles = StyleSheet.create({
         marginLeft: '2%',
         marginRight: '2%',
         marginBottom: '2%'
+    },
+    welfare_title: {
+        fontFamily: 'Cafe24Ohsquareair',
+        fontSize: 20
     },
     welfare_text: {
         fontFamily: 'Cafe24Ohsquareair',

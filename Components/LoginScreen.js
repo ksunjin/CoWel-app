@@ -33,21 +33,6 @@ export default class Login extends React.Component {
         });
 
         this.setState({ isReady: true });
-    }
-
-    signUpUser = (email, password) => {
-        try {
-            if (this.state.password.length < 6) {
-                alert("please enter at least 6 characters")
-                return;
-            }
-            firebase.auth().createUserWithEmailAndPassword(email, password).then(() => {
-                this.props.navigation.navigate('MainScreen')
-            })
-        }
-        catch (error) {
-            alert(error.toString())
-        }
 
     }
     loginUser = (email, password) => {
@@ -101,7 +86,7 @@ export default class Login extends React.Component {
                         style={styles.button_signup}
                         rounded
                         backgroundColor='#5c5c5c'
-                        onPress={() => this.signUpUser(this.state.email, this.state.password)}>
+                        onPress={() => this.props.navigation.navigate('SignUp')}>
                         <Text style={styles.button_text}>Signup</Text>
                     </Button>
                 </Form>
