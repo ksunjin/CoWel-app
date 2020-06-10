@@ -41,7 +41,7 @@ export default class Login extends React.Component {
                 this.props.navigation.navigate('MainScreen')
             })
         } catch (error) {
-            alert(error.toString())
+            alert(error)
         }
 
     }

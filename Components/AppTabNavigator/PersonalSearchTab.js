@@ -50,6 +50,14 @@ export default class PersonalSearchTab extends Component {
                 <View style={styles.container}>
                     <Text style={styles.header}>사용자 정보 기반 맞춤 복지 검색 결과입니다.</Text>
                 </View>
+
+                <View style={styles.container}>
+                    <Button
+                        title="모델 로딩"
+                        onPress={() => this.fileLoad()}>
+                        <Text>모델 로딩</Text>
+                    </Button>
+                </View>
             </View>
         );
     }
