@@ -18,6 +18,7 @@ export default class SignUp extends React.Component {
         super(props)
 
         this.state = ({
+            displayName: '',
             email: '',
             password: '',
             isReady: false,
@@ -34,18 +35,24 @@ export default class SignUp extends React.Component {
         this.setState({ isReady: true });
     }
 
-    signUpUser = (email, password) => {
+    signUpUser = (email, password, displayName) => {
         try {
             if (this.state.password.length < 6) {
                 alert("please enter at least 6 characters")
                 return;
             }
-            firebase.auth().createUserWithEmailAndPassword(email, password).then(() => {
+            firebase.auth().createUserWithEmailAndPassword(email, password).then((userInfo) => {
+                userInfo.user.updateProfile({ displayName }).then(() => { })
+                const userRef = firebase.firestore().collection('users').doc(userInfo.user.uid);
+                userRef.set({
+                    displayName,
+                    email
+                })
                 this.props.navigation.navigate('SetProfileScreen')
             })
         }
         catch (error) {
-            alert(error.toString())
+            alert(error)
         }
 
     }
@@ -54,6 +61,16 @@ export default class SignUp extends React.Component {
         return (
             <Container style={styles.container}>
                 <Form>
+                    <Item floatingLabel>
+                        <Label style={{ fontFamily: 'Cafe24Ohsquareair' }}>Name</Label>
+                        <Input
+                            autoCapitalize="none"
+                            autoCorrect={false}
+                            onChangeText={(displayName) => this.setState({ displayName })}
+                            style={styles.form}
+                        />
+                    </Item>
+
                     <Item floatingLabel>
                         <Label style={{ fontFamily: 'Cafe24Ohsquareair' }}>Email</Label>
                         <Input
@@ -80,7 +97,7 @@ export default class SignUp extends React.Component {
                         style={styles.button_signup}
                         rounded
                         backgroundColor='#5c5c5c'
-                        onPress={() => this.signUpUser(this.state.email, this.state.password)}>
+                        onPress={() => this.signUpUser(this.state.email, this.state.password, this.state.displayName)}>
                         <Text style={styles.button_text}>Signup</Text>
                     </Button>
                 </Form>
@@ -126,62 +143,3 @@ const styles = StyleSheet.create({
         fontFamily: "Cafe24Ohsquareair"
     }
 })
-/*
-export default class SignUp extends React.Component {
-
-    state = { email: '', password: '', errorMessage: null }
-    handleSignUp = () => {
-        firebase
-            .auth()
-            .createUserWithEmailAndPassword(this.state.email, this.state.password)
-            .then(() => this.props.navigation.navigate('SetProfileSrcreen'))
-            .catch(error => this.setState({ errorMessage: error.message }))
-    }
-
-    render() {
-        return (
-            <View style={styles.container}>
-                <Text>Sign Up</Text>
-                {this.state.errorMessage &&
-                    <Text style={{ color: 'red' }}>
-                        {this.state.errorMessage}
-                    </Text>}
-                <TextInput
-                    placeholder="Email"
-                    autoCapitalize="none"
-                    style={styles.textInput}
-                    onChangeText={email => this.setState({ email })}
-                    value={this.state.email}
-                />
-                <TextInput
-                    secureTextEntry
-                    placeholder="Password"
-                    autoCapitalize="none"
-                    style={styles.textInput}
-                    onChangeText={password => this.setState({ password })}
-                    value={this.state.password}
-                />
-                <Button title="Sign Up" onPress={this.handleSignUp} />
-                <Button
-                    title="Already have an account? Login"
-                    onPress={() => this.props.navigation.navigate('Login')}
-                />
-            </View>
-        )
-    }
-}
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center'
-    },
-    textInput: {
-        height: 40,
-        width: '90%',
-        borderColor: 'gray',
-        borderWidth: 1,
-        marginTop: 8
-    }
-})
-*/

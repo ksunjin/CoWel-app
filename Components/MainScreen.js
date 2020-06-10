@@ -46,15 +46,15 @@ export default class MainScreen extends Component {
 
     render() {
         var user = firebase.auth().currentUser;
-        var email;
+        var name;
 
         if (user != null) {
-            email = user.email;
+            name = user.displayName;
         }
 
         return (
             <View style={{ justifyContent: 'space-between' }}>
-                <Text style={styles.user}>안녕하세요 {email} 님</Text>
+                <Text style={styles.user}>안녕하세요 {name} 님</Text>
                 <Button
                     title="logout"
                     style={styles.button_logout}
