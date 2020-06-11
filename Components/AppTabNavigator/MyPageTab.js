@@ -59,7 +59,6 @@ export default class MyPageTab extends Component {
         }
     }
 
-
     render() {
         var user = firebase.auth().currentUser;
         var name;

@@ -9,6 +9,8 @@ import Constants from 'expo-constants';
 import { Card, CardItem, Thumbnail, Body, Left, Right, Button, Icon, Item } from 'native-base';
 import { ScrollView } from 'react-native-gesture-handler';
 
+
+var key = null;
 export default class Welfare extends Component {
     constructor(props) {
         super(props);
