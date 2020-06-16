@@ -41,6 +41,7 @@
     "react-navigation": "^4.3.9",
     "react-navigation-stack": "^2.5.0",
     "react-navigation-tabs": "^2.8.13",
+    "react-xml-parser": "^1.1.6",
     "reactstrap": "^8.4.1",
     "word2vec": "^1.1.4"
   },

@@ -4,6 +4,7 @@ import { StyleSheet, View, Text } from 'react-native';
 //import * as firebase from 'firebase';
 import * as firebase from "firebase/app";
 import "firebase/auth";
+import XMLParser from 'react-xml-parser';
 
 import * as Font from 'expo-font';
 import { Card, CardItem, Thumbnail, Body, Left, Right, Button, Icon } from 'native-base';
