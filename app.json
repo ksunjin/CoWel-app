@@ -23,6 +23,7 @@
     ],
     "ios": {
       "supportsTablet": true
-    }
+    },
+    "description": "COVID19 Welfare News app by React Native"
   }
 }

@@ -134,6 +134,7 @@ export default class PersonalSearchTab extends Component {
                 <View style={{ justifyContent: 'space-between' }}>
                     <Text style={styles.user}>안녕하세요 {name} 님</Text>
                     <View style={styles.container}>
+                        <Text style={styles.title_header}>CoWel</Text>
                         <Text style={styles.header}>사용자 정보 기반 맞춤 복지 검색 페이지입니다.</Text>
                         <Text style={styles.sub}>5분 정도 시간이 소요될 수 있으니 조금만 기다려 주세요!</Text>
                     </View>
@@ -203,6 +204,14 @@ const styles = StyleSheet.create({
         flexGrow: 1,
         flex: 1,
         marginTop: Constants.statusBarHeight,
+    },
+    title_header: {
+        fontFamily: 'Cafe24Ohsquare',
+        padding: 10,
+        marginTop: 50,
+        fontSize: 100,
+        color: 'tomato'
+
     },
     header: {
         fontFamily: 'Cafe24Ohsquare',

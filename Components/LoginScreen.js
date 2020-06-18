@@ -41,7 +41,7 @@ export default class Login extends React.Component {
                 this.props.navigation.navigate('MainScreen')
             })
         } catch (error) {
-            alert(error)
+            console.log(error);
         }
 
     }
@@ -49,6 +49,7 @@ export default class Login extends React.Component {
     render() {
         return (
             <Container style={styles.container}>
+                <Text style={styles.header}>CoWel</Text>
                 <Text style={{ fontFamily: 'Cafe24Ohsquareair' }}>Login</Text>
                 <Form>
                     <Item floatingLabel>
@@ -96,6 +97,13 @@ export default class Login extends React.Component {
 }
 
 const styles = StyleSheet.create({
+    header: {
+        fontFamily: 'Cafe24Ohsquare',
+        padding: 10,
+        fontSize: 100,
+        color: 'tomato'
+
+    },
     container: {
         flex: 1,
         justifyContent: "center",

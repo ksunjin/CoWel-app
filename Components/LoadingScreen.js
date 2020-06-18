@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { Platform, StyleSheet, Text, View } from 'react-native';
 import * as firebase from 'firebase';
 
@@ -15,7 +16,9 @@ export default class Loading extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = { isReady: false };
+        this.state = {
+            isReady: false,
+        };
     }
 
     async componentDidMount() {
@@ -32,6 +35,7 @@ export default class Loading extends React.Component {
         return (
             <View style={styles.container}>
                 <View style={styles.halfContainer}>
+                    <Text style={styles.title_header}>CoWel</Text>
                     <Text style={styles.text_title}>COVID19 특별 복지 제도 알림 앱입니다.</Text>
                     <Text style={styles.text_subtitle}>맞춤 검색을 통해 본인에게 알맞는 복지를 찾아보세요.</Text>
                     <View style={styles.halfContainer}>
@@ -62,13 +66,21 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center"
     },
+    title_header: {
+        fontFamily: 'Cafe24Ohsquare',
+        padding: 10,
+        marginTop: 50,
+        fontSize: 100,
+        color: 'tomato'
+
+    },
     text_title: {
         padding: 20,
         marginTop: 20,
         fontFamily: 'Cafe24Ohsquare',
         fontSize: 32,
         textAlign: "center",
-        color: 'tomato'
+        color: '#5c5c5c'
     },
     text_subtitle: {
         fontFamily: 'Cafe24Ohsquare',

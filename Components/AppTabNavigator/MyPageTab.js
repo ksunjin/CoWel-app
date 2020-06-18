@@ -5,7 +5,7 @@ import * as firebase from "firebase/app";
 import "firebase/firebase-database";
 import firebaseConfig from '../../src/config/fire';
 
-import '../../src/config/style.css'
+//import '../../src/config/style.css'
 import * as Font from 'expo-font';
 import { Button, Container, Form, Input, Item, Label } from 'native-base';
 import { ScrollView } from 'react-native-gesture-handler';
@@ -72,6 +72,7 @@ export default class MyPageTab extends Component {
             <View style={{ justifyContent: 'space-between' }}>
                 <Text style={styles.user}>안녕하세요 {name} 님</Text>
                 <View style={styles.container}>
+                    <Text style={styles.title_header}>CoWel</Text>
                     <Text style={styles.header}>My Page</Text>
                 </View>
                 <View style={styles.container2}>
@@ -119,6 +120,14 @@ const styles = StyleSheet.create({
     },
     container3: {
         flex: 3,
+    },
+    title_header: {
+        fontFamily: 'Cafe24Ohsquare',
+        padding: 10,
+        marginTop: 50,
+        fontSize: 100,
+        color: 'tomato'
+
     },
     header: {
         fontFamily: 'Cafe24Ohsquare',

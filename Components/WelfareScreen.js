@@ -43,6 +43,8 @@ export default class Welfare extends Component {
 
         return (
             <ScrollView>
+                <Text style={styles.header}>CoWel</Text>
+                <Text style={styles.sub}>공공데이터 활용지원센터 _코로나19 관련 정부지원 맞춤형 서비스 정보(민생 경제 지원)</Text>
                 {
                     this.state.data.map(value => {
 
@@ -82,6 +84,22 @@ const styles = StyleSheet.create({
     container: {
         flexGrow: 1,
         marginTop: Constants.statusBarHeight,
+    },
+    header: {
+        fontFamily: 'Cafe24Ohsquare',
+        padding: 10,
+        marginTop: 50,
+        fontSize: 100,
+        marginLeft: '2%',
+        color: 'tomato'
+
+    },
+    sub: {
+        fontFamily: 'Cafe24Ohsquareair',
+        marginTop: 10,
+        marginLeft: '2%',
+        padding: 10,
+        color: "#5c5c5c"
     },
     scrollView: {
         marginHorizontal: 20,

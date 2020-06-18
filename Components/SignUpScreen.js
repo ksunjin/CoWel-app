@@ -60,6 +60,7 @@ export default class SignUp extends React.Component {
     render() {
         return (
             <Container style={styles.container}>
+                <Text style={styles.header}>CoWel</Text>
                 <Form>
                     <Item floatingLabel>
                         <Label style={{ fontFamily: 'Cafe24Ohsquareair' }}>Name</Label>
@@ -111,6 +112,14 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: "center",
         padding: 20
+    },
+    header: {
+        fontFamily: 'Cafe24Ohsquare',
+        padding: 10,
+
+        fontSize: 100,
+        color: 'tomato'
+
     },
     button_text: {
         color: "white",
