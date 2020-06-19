@@ -36,7 +36,7 @@ export default class Loading extends React.Component {
             <View style={styles.container}>
                 <View style={styles.halfContainer}>
                     <Text style={styles.title_header}>CoWel</Text>
-                    <Text style={styles.text_title}>COVID19 특별 복지 제도 알림 앱입니다.</Text>
+                    <Text style={styles.text_title}>COVID19 특별 복지 알리미</Text>
                     <Text style={styles.text_subtitle}>맞춤 검색을 통해 본인에게 알맞는 복지를 찾아보세요.</Text>
                     <View style={styles.halfContainer}>
 

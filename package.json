@@ -5,7 +5,8 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "eject": "expo eject"
+    "eject": "expo eject",
+    "postinstall": "rn-nodeify --install fs,dgram,process,path,console,crypto,vm,stream,buffer,events,assert --hack"
   },
   "dependencies": {
     "@material-ui/core": "^4.10.2",
@@ -13,8 +14,11 @@
     "@react-native-firebase/firestore": "^7.0.1",
     "@react-navigation/bottom-tabs": "^5.4.5",
     "@react-navigation/stack": "^5.3.3",
+    "assert": "^1.5.0",
     "axios": "^0.19.2",
+    "buffer": "^4.9.2",
     "cheerio": "^1.0.0-rc.3",
+    "console-browserify": "^1.2.0",
     "cors": "^2.8.5",
     "expo": "^37.0.11",
     "expo-constants": "~9.0.0",
@@ -22,6 +26,8 @@
     "firebase": "^7.9.0",
     "firebaseui": "^4.5.0",
     "native-base": "^2.13.12",
+    "path-browserify": "0.0.0",
+    "process": "^0.11.10",
     "react": "^16.13.1",
     "react-addons-css-transition-group": "^15.6.2",
     "react-addons-transition-group": "^15.6.2",
@@ -30,16 +36,24 @@
     "react-material-ui-form-validator": "^2.0.10",
     "react-native": "https://github.com/expo/react-native/archive/sdk-37.0.1.tar.gz",
     "react-native-cardview": "^2.0.5",
+    "react-native-crypto": "^2.2.0",
     "react-native-elements": "^2.0.0",
     "react-native-firebase": "^5.6.0",
     "react-native-gesture-handler": "^1.6.1",
+    "react-native-html-parser": "^0.1.0",
     "react-native-ionicons": "^5.0.0-rc",
+    "react-native-level-fs": "^3.0.1",
     "react-native-material-dropdown": "^0.11.1",
     "react-native-picker-select": "^7.0.0",
     "react-native-radio-buttons-group": "^1.0.7",
+    "react-native-randombytes": "^3.5.3",
     "react-native-reanimated": "^1.8.0",
+    "react-native-request": "0.0.4",
     "react-native-safe-area-context": "^1.0.0",
     "react-native-screens": "^2.7.0",
+    "react-native-stream": "^0.1.9",
+    "react-native-udp": "^2.7.0",
+    "react-native-util": "^1.0.2",
     "react-native-watson": "^1.6.2",
     "react-native-web": "~0.11.7",
     "react-native-xml2js": "^1.0.3",
@@ -48,12 +62,16 @@
     "react-navigation-tabs": "^2.8.13",
     "react-xml-parser": "^1.1.6",
     "reactstrap": "^8.4.1",
+    "readable-stream": "^1.0.33",
     "request": "^2.88.2",
-    "word2vec": "^1.1.4"
+    "steem": "^0.7.11",
+    "stream-browserify": "^1.0.0",
+    "vm-browserify": "0.0.4"
   },
   "devDependencies": {
+    "@babel/core": "^7.8.6",
     "babel-preset-expo": "~8.1.0",
-    "@babel/core": "^7.8.6"
+    "rn-nodeify": "^10.2.0"
   },
   "private": true,
   "name": "cowel-app-master",
@@ -78,5 +96,33 @@
     "assets": [
       "../assets/fonts"
     ]
+  },
+  "react-native": {
+    "console": "console-browserify",
+    "crypto": "react-native-crypto",
+    "path": "path-browserify",
+    "fs": "react-native-level-fs",
+    "_stream_transform": "readable-stream/transform",
+    "_stream_readable": "readable-stream/readable",
+    "_stream_writable": "readable-stream/writable",
+    "_stream_duplex": "readable-stream/duplex",
+    "_stream_passthrough": "readable-stream/passthrough",
+    "dgram": "react-native-udp",
+    "stream": "stream-browserify",
+    "vm": "vm-browserify"
+  },
+  "browser": {
+    "console": "console-browserify",
+    "crypto": "react-native-crypto",
+    "path": "path-browserify",
+    "fs": "react-native-level-fs",
+    "_stream_transform": "readable-stream/transform",
+    "_stream_readable": "readable-stream/readable",
+    "_stream_writable": "readable-stream/writable",
+    "_stream_duplex": "readable-stream/duplex",
+    "_stream_passthrough": "readable-stream/passthrough",
+    "dgram": "react-native-udp",
+    "stream": "stream-browserify",
+    "vm": "vm-browserify"
   }
 }

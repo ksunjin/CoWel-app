@@ -44,7 +44,8 @@ export default class Welfare extends Component {
         return (
             <ScrollView>
                 <Text style={styles.header}>CoWel</Text>
-                <Text style={styles.sub}>공공데이터 활용지원센터 _코로나19 관련 정부지원 맞춤형 서비스 정보(민생 경제 지원)</Text>
+                <Text style={styles.sub}>공공데이터 활용지원센터</Text>
+                <Text style={styles.sub}>코로나19 관련 정부지원 맞춤형 서비스 정보(민생경제지원)</Text>
                 {
                     this.state.data.map(value => {
 
