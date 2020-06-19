@@ -21,7 +21,8 @@ export default class Welfare extends Component {
     async componentDidMount() {
 
         await Font.loadAsync({
-            'Cafe24Ohsquareair': require('../assets/fonts/Cafe24Ohsquareair.ttf'),
+            'MapoDPP': require('../assets/fonts/MapoDPP.ttf'),
+            'RIDIBatang': require('../assets/fonts/RIDIBatang.ttf'),
         });
 
         this.setState({ isReady: true });
@@ -87,7 +88,7 @@ const styles = StyleSheet.create({
         marginTop: Constants.statusBarHeight,
     },
     header: {
-        fontFamily: 'Cafe24Ohsquare',
+        fontFamily: 'MapoDPP',
         padding: 10,
         marginTop: 50,
         fontSize: 100,
@@ -96,7 +97,7 @@ const styles = StyleSheet.create({
 
     },
     sub: {
-        fontFamily: 'Cafe24Ohsquareair',
+        fontFamily: 'RIDIBatang',
         marginTop: 10,
         marginLeft: '2%',
         padding: 10,
@@ -112,11 +113,11 @@ const styles = StyleSheet.create({
         marginBottom: '2%'
     },
     welfare_title: {
-        fontFamily: 'Cafe24Ohsquareair',
+        fontFamily: 'RIDIBatang',
         fontSize: 20
     },
     welfare_text: {
-        fontFamily: 'Cafe24Ohsquareair',
+        fontFamily: 'RIDIBatang',
         fontSize: 15
     }
 

@@ -24,8 +24,8 @@ export default class Loading extends React.Component {
     async componentDidMount() {
 
         await Font.loadAsync({
-            'Cafe24Ohsquare': require('../assets/fonts/Cafe24Ohsquare.ttf'),
-            'Cafe24Ohsquareair': require('../assets/fonts/Cafe24Ohsquareair.ttf'),
+            'MapoDPP': require('../assets/fonts/MapoDPP.ttf'),
+            'RIDIBatang': require('../assets/fonts/RIDIBatang.ttf'),
         });
 
         this.setState({ isReady: true });
@@ -67,23 +67,23 @@ const styles = StyleSheet.create({
         alignItems: "center"
     },
     title_header: {
-        fontFamily: 'Cafe24Ohsquare',
+        fontFamily: 'MapoDPP',
         padding: 10,
         marginTop: 50,
-        fontSize: 100,
+        fontSize: 80,
         color: 'tomato'
 
     },
     text_title: {
         padding: 20,
         marginTop: 20,
-        fontFamily: 'Cafe24Ohsquare',
+        fontFamily: 'MapoDPP',
         fontSize: 32,
         textAlign: "center",
         color: '#5c5c5c'
     },
     text_subtitle: {
-        fontFamily: 'Cafe24Ohsquare',
+        fontFamily: 'MapoDPP',
         fontSize: 20,
         textAlign: "center",
         color: '#5c5c5c'
@@ -96,7 +96,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'tomato'
     },
     start_text: {
-        fontFamily: 'Cafe24Ohsquareair',
+        fontFamily: 'RIDIBatang',
         fontSize: 30,
         alignItems: "center",
         justifyContent: "center",

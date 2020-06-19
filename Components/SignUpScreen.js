@@ -28,8 +28,8 @@ export default class SignUp extends React.Component {
     async componentDidMount() {
 
         await Font.loadAsync({
-            'Cafe24Ohsquare': require('../assets/fonts/Cafe24Ohsquare.ttf'),
-            'Cafe24Ohsquareair': require('../assets/fonts/Cafe24Ohsquareair.ttf'),
+            'MapoDPP': require('../assets/fonts/MapoDPP.ttf'),
+            'RIDIBatang': require('../assets/fonts/RIDIBatang.ttf'),
         });
 
         this.setState({ isReady: true });
@@ -63,7 +63,7 @@ export default class SignUp extends React.Component {
                 <Text style={styles.header}>CoWel</Text>
                 <Form>
                     <Item floatingLabel>
-                        <Label style={{ fontFamily: 'Cafe24Ohsquareair' }}>Name</Label>
+                        <Label style={{ fontFamily: 'RIDIBatang' }}>Name</Label>
                         <Input
                             autoCapitalize="none"
                             autoCorrect={false}
@@ -73,7 +73,7 @@ export default class SignUp extends React.Component {
                     </Item>
 
                     <Item floatingLabel>
-                        <Label style={{ fontFamily: 'Cafe24Ohsquareair' }}>Email</Label>
+                        <Label style={{ fontFamily: 'RIDIBatang' }}>Email</Label>
                         <Input
                             autoCapitalize="none"
                             autoCorrect={false}
@@ -83,7 +83,7 @@ export default class SignUp extends React.Component {
                     </Item>
 
                     <Item floatingLabel>
-                        <Label style={{ fontFamily: 'Cafe24Ohsquareair' }}>Password</Label>
+                        <Label style={{ fontFamily: 'RIDIBatang' }}>Password</Label>
                         <Input
                             secureTextEntry={true}
                             autoCapitalize="none"
@@ -114,18 +114,16 @@ const styles = StyleSheet.create({
         padding: 20
     },
     header: {
-        fontFamily: 'Cafe24Ohsquare',
+        fontFamily: 'MapoDPP',
         padding: 10,
-
-        fontSize: 100,
+        fontSize: 80,
         color: 'tomato'
-
     },
     button_text: {
         color: "white",
         alignItems: "center",
         justifyContent: "center",
-        fontFamily: "Cafe24Ohsquareair",
+        fontFamily: "RIDIBatang",
         fontSize: 25
     },
     button_login: {
@@ -149,6 +147,6 @@ const styles = StyleSheet.create({
     form: {
         marginTop: 20,
         marginBottom: 20,
-        fontFamily: "Cafe24Ohsquareair"
+        fontFamily: "RIDIBatang"
     }
 })

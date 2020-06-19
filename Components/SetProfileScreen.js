@@ -72,8 +72,8 @@ export default class SetProfile extends Component {
     async componentDidMount() {
 
         await Font.loadAsync({
-            'Cafe24Ohsquare': require('../assets/fonts/Cafe24Ohsquare.ttf'),
-            'Cafe24Ohsquareair': require('../assets/fonts/Cafe24Ohsquareair.ttf'),
+            'MapoDPP': require('../assets/fonts/MapoDPP.ttf'),
+            'RIDIBatang': require('../assets/fonts/RIDIBatang.ttf'),
 
         });
 
@@ -116,6 +116,9 @@ export default class SetProfile extends Component {
 
             <ScrollView>
                 <Container styles={styles.container}>
+                    <Text style={styles.title_header}>
+                        CoWel
+                        </Text>
                     <Text style={styles.title}>
                         SetProfile
                         </Text>
@@ -124,7 +127,7 @@ export default class SetProfile extends Component {
                         </Text>
                     <Form>
                         <Item floatingLabel>
-                            <Label style={{ fontFamily: 'Cafe24Ohsquareair' }}>나이</Label>
+                            <Label style={{ fontFamily: 'RIDIBatang' }}>나이</Label>
                             <Input
                                 onChangeText={(age) => this.setState({ age })}
                                 style={styles.form}>
@@ -132,7 +135,7 @@ export default class SetProfile extends Component {
                         </Item>
 
                         <Item floatingLabel>
-                            <Label style={{ fontFamily: 'Cafe24Ohsquareair' }}>주소 (시군구)</Label>
+                            <Label style={{ fontFamily: 'RIDIBatang' }}>주소 (시군구)</Label>
                             <Input
                                 onChangeText={(address) => this.setState({ address })}
                                 style={styles.form}>
@@ -140,7 +143,7 @@ export default class SetProfile extends Component {
                         </Item>
 
                         <Item floatingLabel>
-                            <Label style={{ fontFamily: 'Cafe24Ohsquareair' }}>소득분위</Label>
+                            <Label style={{ fontFamily: 'RIDIBatang' }}>소득분위</Label>
                             <Input
                                 onChangeText={(Quintile) => this.setState({ Quintile })}
                                 style={styles.form}>
@@ -148,28 +151,28 @@ export default class SetProfile extends Component {
                         </Item>
 
                         <Item floatingLabel>
-                            <Label style={{ fontFamily: 'Cafe24Ohsquareair' }}>성별</Label>
+                            <Label style={{ fontFamily: 'RIDIBatang' }}>성별</Label>
                             <Input
                                 onChangeText={(gender) => this.setState({ gender })}
                                 style={styles.form}>
                             </Input>
                         </Item>
                         <Item floatingLabel>
-                            <Label style={{ fontFamily: 'Cafe24Ohsquareair' }}>가구 수</Label>
+                            <Label style={{ fontFamily: 'RIDIBatang' }}>가구 수</Label>
                             <Input
                                 onChangeText={(family) => this.setState({ family })}
                                 style={styles.form}>
                             </Input>
                         </Item>
-                        <Text style={{ fontFamily: 'Cafe24Ohsquareair', color: '#575757', fontSize: 17, marginTop: 15, marginLeft: 15 }}>자녀 여부</Text>
+                        <Text style={{ fontFamily: 'RIDIBatang', color: '#575757', fontSize: 17, marginTop: 15, marginLeft: 15 }}>자녀 여부</Text>
                         <RadioGroup
                             radioButtons={this.state.profile.child} onPress={this.onPress2} flexDirection="row"
-                            style={{ fontFamily: 'Cafe24Ohsquareair', justifyContent: 'space-between', marginLeft: 20, marginTop: 20 }} />
+                            style={{ fontFamily: 'RIDIBatang', justifyContent: 'space-between', marginLeft: 20, marginTop: 20 }} />
 
-                        <Text style={{ fontFamily: 'Cafe24Ohsquareair', color: '#575757', fontSize: 17, marginTop: 15, marginLeft: 15 }}>직업</Text>
+                        <Text style={{ fontFamily: 'RIDIBatang', color: '#575757', fontSize: 17, marginTop: 15, marginLeft: 15 }}>직업</Text>
                         <RadioGroup
                             radioButtons={this.state.profile.job} onPress={this.onPress} flexDirection="row"
-                            style={{ fontFamily: 'Cafe24Ohsquareair', justifyContent: 'space-between', marginLeft: 20, marginTop: 20 }} />
+                            style={{ fontFamily: 'RIDIBatang', justifyContent: 'space-between', marginLeft: 20, marginTop: 20 }} />
                         <Button
                             title="save"
                             style={styles.button_ok}
@@ -193,20 +196,28 @@ const styles = StyleSheet.create({
         padding: 20,
     },
     user: {
-        fontFamily: 'Cafe24Ohsquareair',
+        fontFamily: 'RIDIBatang',
         padding: 10,
         alignSelf: "flex-end",
         marginTop: 10
     },
+    title_header: {
+        fontFamily: 'MapoDPP',
+        fontSize: 80,
+        justifyContent: 'center',
+        textAlign: 'center',
+        marginTop: 50,
+        color: "tomato"
+    },
     title: {
-        fontFamily: 'Cafe24Ohsquareair',
+        fontFamily: 'RIDIBatang',
         fontSize: 20,
         justifyContent: 'center',
         textAlign: 'center',
         marginTop: 50
     },
     subtitle: {
-        fontFamily: 'Cafe24Ohsquareair',
+        fontFamily: 'RIDIBatang',
         fontSize: 15,
         justifyContent: 'center',
         textAlign: 'center',
@@ -217,13 +228,13 @@ const styles = StyleSheet.create({
         marginBottom: 20,
         marginRight: 20,
         marginLeft: 20,
-        fontFamily: "Cafe24Ohsquareair"
+        fontFamily: "RIDIBatang"
     },
     button_text: {
         color: "white",
         alignItems: "center",
         justifyContent: "center",
-        fontFamily: "Cafe24Ohsquareair",
+        fontFamily: "RIDIBatang",
         fontSize: 25
     },
     button_ok: {

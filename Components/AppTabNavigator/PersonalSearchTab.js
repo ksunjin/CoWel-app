@@ -3,6 +3,7 @@ import { StyleSheet, View, Text } from 'react-native';
 
 import * as firebase from "firebase/app";
 import "firebase/firebase-database";
+import 'firebase/firestore';
 import firebaseConfig from '../../src/config/fire';
 
 import * as Font from 'expo-font';
@@ -57,8 +58,8 @@ export default class PersonalSearchTab extends Component {
     async componentDidMount() {
 
         await Font.loadAsync({
-            'Cafe24Ohsquare': require('../../assets/fonts/Cafe24Ohsquare.ttf'),
-            'Cafe24Ohsquareair': require('../../assets/fonts/Cafe24Ohsquareair.ttf'),
+            'MapoDPP': require('../../assets/fonts/MapoDPP.ttf'),
+            'RIDIBatang': require('../../assets/fonts/RIDIBatang.ttf'),
 
         });
 
@@ -206,7 +207,7 @@ const styles = StyleSheet.create({
         marginTop: Constants.statusBarHeight,
     },
     title_header: {
-        fontFamily: 'Cafe24Ohsquare',
+        fontFamily: 'MapoDPP',
         padding: 10,
         marginTop: 50,
         fontSize: 100,
@@ -214,18 +215,20 @@ const styles = StyleSheet.create({
 
     },
     header: {
-        fontFamily: 'Cafe24Ohsquare',
+        fontFamily: 'MapoDPP',
         fontSize: 20,
-        color: 'tomato'
+        color: 'tomato',
+        marginLeft: '2%'
     },
     sub: {
-        fontFamily: 'Cafe24Ohsquareair',
+        fontFamily: 'RIDIBatang',
         fontSize: 17,
         color: '#5c5c5c',
-        marginTop: 10
+        marginTop: 10,
+        marginLeft: '2%'
     },
     user: {
-        fontFamily: 'Cafe24Ohsquareair',
+        fontFamily: 'RIDIBatang',
         padding: 10,
         alignSelf: "flex-end",
         marginTop: 10
@@ -239,7 +242,7 @@ const styles = StyleSheet.create({
         marginTop: 100
     },
     check_button_text: {
-        fontFamily: 'Cafe24Ohsquareair',
+        fontFamily: 'RIDIBatang',
         color: '#5c5c5c'
     },
     card_style: {
@@ -249,6 +252,6 @@ const styles = StyleSheet.create({
         marginBottom: '2%'
     },
     personalData_text: {
-        fontFamily: 'Cafe24Ohsquareair',
+        fontFamily: 'RIDIBatang',
     }
 });

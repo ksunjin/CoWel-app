@@ -33,8 +33,8 @@ export default class MainScreen extends Component {
     async componentDidMount() {
 
         await Font.loadAsync({
-            'Cafe24Ohsquare': require('../assets/fonts/Cafe24Ohsquare.ttf'),
-            'Cafe24Ohsquareair': require('../assets/fonts/Cafe24Ohsquareair.ttf'),
+            'MapoDPP': require('../assets/fonts/MapoDPP.ttf'),
+            'RIDIBatang': require('../assets/fonts/RIDIBatang.ttf'),
 
         });
 
@@ -173,15 +173,12 @@ export default class MainScreen extends Component {
                             this.state.status.map(value => {
                                 return (
                                     <View style={styles.thirdContainer}>
-                                        <div>
-                                            <span>
-                                                <Text style={styles.covid_news}> 지역: {value.si} -></Text>
-                                                <Text style={styles.covid_news}> 확진자 전일 대비 증감 수: {value.incDec}</Text>
-                                            </span>
-                                        </div>
-                                        <div>
-                                            <Text>{`\n`}</Text>
-                                        </div>
+
+                                        <Text style={styles.covid_news}> 지역: {value.si} -></Text>
+                                        <Text style={styles.covid_news}> 확진자 전일 대비 증감 수: {value.incDec}</Text>
+
+                                        <Text>{`\n`}</Text>
+
                                     </View>
                                 )
                             })
@@ -195,15 +192,12 @@ export default class MainScreen extends Component {
                                     return (
 
                                         <View style={styles.thirdContainer}>
-                                            <div>
-                                                <span>
-                                                    <Text style={styles.covid_news}> 업종: {item.kinds} -></Text>
-                                                    <Text style={styles.covid_news}> 브랜드: {item.brands}</Text>
-                                                </span>
-                                            </div>
-                                            <div>
-                                                <Text>{`\n`}</Text>
-                                            </div>
+
+                                            <Text style={styles.covid_news}> 업종: {item.kinds} -></Text>
+                                            <Text style={styles.covid_news}> 브랜드: {item.brands}</Text>
+
+                                            <Text>{`\n`}</Text>
+
                                         </View>
                                     )
                                 })
@@ -225,7 +219,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     header: {
-        fontFamily: 'Cafe24Ohsquare',
+        fontFamily: 'MapoDPP',
         padding: 10,
         marginTop: 50,
         fontSize: 100,
@@ -233,14 +227,14 @@ const styles = StyleSheet.create({
 
     },
     sub: {
-        fontFamily: 'Cafe24Ohsquareair',
+        fontFamily: 'RIDIBatang',
         marginTop: 20,
         fontSize: 30,
         color: '#5c5c5c',
 
     },
     user: {
-        fontFamily: 'Cafe24Ohsquareair',
+        fontFamily: 'RIDIBatang',
         padding: 10,
         alignSelf: "flex-end",
         marginTop: 10
@@ -257,7 +251,7 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "center",
         textAlign: 'center',
-        fontFamily: "Cafe24Ohsquareair",
+        fontFamily: "RIDIBatang",
         fontSize: 15
     },
     secondContainer: {
@@ -269,7 +263,7 @@ const styles = StyleSheet.create({
         marginLeft: 10
     },
     covid_news: {
-        fontFamily: 'Cafe24Ohsquareair',
+        fontFamily: 'RIDIBatang',
     }
 
 });

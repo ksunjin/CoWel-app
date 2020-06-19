@@ -32,8 +32,8 @@ export default class MyPageTab extends Component {
     async componentDidMount() {
 
         await Font.loadAsync({
-            'Cafe24Ohsquare': require('../../assets/fonts/Cafe24Ohsquare.ttf'),
-            'Cafe24Ohsquareair': require('../../assets/fonts/Cafe24Ohsquareair.ttf'),
+            'MapoDPP': require('../../assets/fonts/MapoDPP.ttf'),
+            'RIDIBatang': require('../../assets/fonts/RIDIBatang.ttf'),
 
         });
 
@@ -69,42 +69,51 @@ export default class MyPageTab extends Component {
 
 
         return (
-            <View style={{ justifyContent: 'space-between' }}>
-                <Text style={styles.user}>안녕하세요 {name} 님</Text>
-                <View style={styles.container}>
-                    <Text style={styles.title_header}>CoWel</Text>
-                    <Text style={styles.header}>My Page</Text>
+            <ScrollView>
+                <View style={{ justifyContent: 'space-between' }}>
+                    <Text style={styles.user}>안녕하세요 {name} 님</Text>
+                    <View style={styles.container}>
+                        <Text style={styles.title_header}>CoWel</Text>
+                        <Text style={styles.header}>My Page</Text>
+                    </View>
+                    <View style={styles.container2}>
+                        <Button
+                            title="정보 확인"
+                            rounded
+                            style={styles.check_button}
+                            onPress={() => this.getUserInfo()}>
+                            <Text style={styles.check_button_text}>정보 확인하기</Text>
+                        </Button>
+                    </View>
+                    <View style={styles.container3}>
+
+                        {
+                            this.state.userInfo.map(item => {
+                                return (
+                                    <View>
+                                        <Text style={styles.list_text}>닉네임: {item.displayName}</Text>
+                                        <Text style={styles.list_text}>나이: {item.age} 세</Text>
+                                        <Text style={styles.list_text}>소득분위: {item.Quintile} 분위</Text>
+                                        <Text style={styles.list_text}>가구수: {item.family} 명</Text>
+                                        <Text style={styles.list_text}>자녀: {item.child}</Text>
+                                        <Text style={styles.list_text}>성별: {item.gender}</Text>
+                                        <Text style={styles.list_text}>직업: {item.job}</Text>
+                                    </View>
+                                )
+                            })
+                        }
+
+
+
+                    </View>
                 </View>
-                <View style={styles.container2}>
-                    <Button
-                        title="정보 확인"
-                        rounded
-                        style={styles.check_button}
-                        onPress={() => this.getUserInfo()}>
-                        <Text style={styles.check_button_text}>정보 확인하기</Text>
-                    </Button>
-                </View>
-                <View style={styles.container3}>
-                    <Text>
-                        {this.state.userInfo.map(item => (
-                            <ul>
-                                <li><Text style={styles.list_text}>닉네임: {item.displayName}</Text></li>
-                                <li><Text style={styles.list_text}>나이: {item.age} 세</Text></li>
-                                <li><Text style={styles.list_text}>소득분위: {item.Quintile} 분위</Text></li>
-                                <li><Text style={styles.list_text}>가구수: {item.family} 명</Text></li>
-                                <li><Text style={styles.list_text}>자녀: {item.child}</Text></li>
-                                <li><Text style={styles.list_text}>성별: {item.gender}</Text></li>
-                                <li><Text style={styles.list_text}>직업: {item.job}</Text></li>
-                            </ul>
-                        ))}
-                    </Text>
-                </View>
-            </View>
+            </ScrollView>
         )
 
 
     }
 }
+
 
 
 const styles = StyleSheet.create({
@@ -117,28 +126,30 @@ const styles = StyleSheet.create({
         flex: 2,
         alignItems: 'center',
         justifyContent: 'center',
+        marginTop: 10
     },
     container3: {
         flex: 3,
     },
     title_header: {
-        fontFamily: 'Cafe24Ohsquare',
+        fontFamily: 'MapoDPP',
         padding: 10,
         marginTop: 50,
-        fontSize: 100,
+        fontSize: 80,
         color: 'tomato'
 
     },
     header: {
-        fontFamily: 'Cafe24Ohsquare',
+        fontFamily: 'MapoDPP',
         fontSize: 20,
         color: 'tomato'
     },
     user: {
-        fontFamily: 'Cafe24Ohsquareair',
+        fontFamily: 'RIDIBatang',
         padding: 10,
         alignSelf: "flex-end",
-        marginTop: 10
+        marginTop: 10,
+        marginBottom: 20
     },
     check_button: {
         alignSelf: 'center',
@@ -149,13 +160,13 @@ const styles = StyleSheet.create({
         marginTop: 100
     },
     check_button_text: {
-        fontFamily: 'Cafe24Ohsquareair',
+        fontFamily: 'RIDIBatang',
         color: '#5c5c5c'
     },
     list_text: {
         marginTop: 100,
         marginLeft: 50,
-        fontFamily: 'Cafe24Ohsquareair',
+        fontFamily: 'RIDIBatang',
         justifyContent: 'flex-start'
     }
 });
