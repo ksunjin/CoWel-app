@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text, FlatList } from 'react-native';
+import { StyleSheet, View, Text, Image } from 'react-native';
 
 import * as firebase from "firebase/app";
-import "firebase/firebase-database";
+
+// Add the Firebase products that you want to use
+import "firebase/auth";
+import "firebase/firestore";
+import "firebase/database";
 import firebaseConfig from '../src/config/fire';
 
 import Constants from 'expo-constants';
-import { Card, CardItem, Thumbnail, Body, Left, Right, Button, Icon, Item } from 'native-base';
+import { Card, CardItem } from 'native-base';
 import { ScrollView } from 'react-native-gesture-handler';
 
 export default class Welfare extends Component {
@@ -43,8 +47,8 @@ export default class Welfare extends Component {
     render() {
 
         return (
-            <ScrollView>
-                <Text style={styles.header}>CoWel</Text>
+            <ScrollView style={{ backgroundColor: "#263249" }}>
+                <Image source={require('../assets/pic2.png')} style={styles.logo} />
                 <Text style={styles.sub}>공공데이터 활용지원센터</Text>
                 <Text style={styles.sub}>코로나19 관련 정부지원 맞춤형 서비스 정보(민생경제지원)</Text>
                 {
@@ -93,15 +97,16 @@ const styles = StyleSheet.create({
         marginTop: 50,
         fontSize: 100,
         marginLeft: '2%',
-        color: 'tomato'
+        color: '#ec1d27'
 
     },
     sub: {
+        fontSize: 20,
         fontFamily: 'RIDIBatang',
         marginTop: 10,
         marginLeft: '2%',
         padding: 10,
-        color: "#5c5c5c"
+        color: "white"
     },
     scrollView: {
         marginHorizontal: 20,
@@ -110,7 +115,8 @@ const styles = StyleSheet.create({
         marginTop: '2%',
         marginLeft: '2%',
         marginRight: '2%',
-        marginBottom: '2%'
+        marginBottom: '2%',
+        borderRadius: 10,
     },
     welfare_title: {
         fontFamily: 'RIDIBatang',
@@ -119,6 +125,13 @@ const styles = StyleSheet.create({
     welfare_text: {
         fontFamily: 'RIDIBatang',
         fontSize: 15
+    },
+    logo: {
+        justifyContent: "center",
+        alignSelf: "center",
+        width: 650,
+        height: 650,
+        position: "relative"
     }
 
 })

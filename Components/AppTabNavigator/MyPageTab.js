@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text, Picker } from 'react-native';
+import { StyleSheet, View, Text, Image } from 'react-native';
 
 import * as firebase from "firebase/app";
-import "firebase/firebase-database";
+import "firebase/auth";
+import "firebase/firestore";
 import firebaseConfig from '../../src/config/fire';
 
-//import '../../src/config/style.css'
+import '../../src/config/style.css'
 import * as Font from 'expo-font';
 import { Button, Container, Form, Input, Item, Label } from 'native-base';
 import { ScrollView } from 'react-native-gesture-handler';
@@ -59,6 +60,18 @@ export default class MyPageTab extends Component {
         }
     }
 
+    logoutUser = () => {
+        try {
+            firebase.auth().signOut().then(() => {
+                this.props.navigation.navigate('LoadingScreen')
+            })
+        }
+        catch (error) {
+            alert("ID/PW를 다시 확인해주세요")
+        }
+
+    }
+
     render() {
         var user = firebase.auth().currentUser;
         var name;
@@ -69,11 +82,17 @@ export default class MyPageTab extends Component {
 
 
         return (
-            <ScrollView>
+            <ScrollView style={{ backgroundColor: "#263249" }}>
                 <View style={{ justifyContent: 'space-between' }}>
                     <Text style={styles.user}>안녕하세요 {name} 님</Text>
+                    <Button
+                        title="logout"
+                        style={styles.button_logout}
+                        onPress={() => this.logoutUser()}>
+                        <Text style={styles.button_logout_text}>logout</Text>
+                    </Button>
                     <View style={styles.container}>
-                        <Text style={styles.title_header}>CoWel</Text>
+                        <Image source={require('../../assets/pic2.png')} style={styles.logo} />
                         <Text style={styles.header}>My Page</Text>
                     </View>
                     <View style={styles.container2}>
@@ -134,22 +153,38 @@ const styles = StyleSheet.create({
     title_header: {
         fontFamily: 'MapoDPP',
         padding: 10,
-        marginTop: 50,
+        marginTop: 20,
         fontSize: 80,
-        color: 'tomato'
+        color: '#ec1d27'
 
     },
     header: {
         fontFamily: 'MapoDPP',
         fontSize: 20,
-        color: 'tomato'
+        color: '#ec1d27'
     },
     user: {
         fontFamily: 'RIDIBatang',
         padding: 10,
         alignSelf: "flex-end",
         marginTop: 10,
-        marginBottom: 20
+        marginBottom: 20,
+        color: "white"
+    },
+    button_logout: {
+        justifyContent: "space-between",
+        alignSelf: "flex-end",
+        backgroundColor: "#263249",
+        marginRight: 10,
+        width: 80
+    },
+    button_logout_text: {
+        color: "white",
+        alignItems: "center",
+        justifyContent: "center",
+        textAlign: 'center',
+        fontFamily: "RIDIBatang",
+        fontSize: 15
     },
     check_button: {
         alignSelf: 'center',
@@ -164,9 +199,18 @@ const styles = StyleSheet.create({
         color: '#5c5c5c'
     },
     list_text: {
-        marginTop: 100,
+        color: "white",
+        marginTop: 80,
         marginLeft: 50,
+        marginBottom: 30,
         fontFamily: 'RIDIBatang',
         justifyContent: 'flex-start'
+    },
+    logo: {
+        justifyContent: "center",
+        alignSelf: "center",
+        width: 650,
+        height: 650,
+        position: "relative"
     }
 });

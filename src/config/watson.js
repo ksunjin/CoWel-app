@@ -1,3 +1,4 @@
+
 const AssistantV2 = require('ibm-watson/assistant/v2');
 const { IamAuthenticator } = require('ibm-watson/auth');
 
@@ -9,6 +10,8 @@ const Vaccine_Assistant = new AssistantV2({
 const assistantId = '896caf8f-efc9-4aee-96b3-7bf75563d7ec';
 let sessionId;
 var temp;
+
+
 
 function getUserInput() {
     temp = document.getElementById('userInput').value;
@@ -37,7 +40,7 @@ function result() {
         .then(response => {
             console.log(JSON.stringify(response.result, null, 2));
             var response_result = JSON.stringify(response.result.output.generic[0].text, null, 2);
-            document.getElementById("chatbot").innerHTML = response_result;
+            //document.getElementById("chatbot").innerHTML = response_result;
 
         })
         .catch(err => {

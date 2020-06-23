@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, Text, Image } from 'react-native';
 
 import * as firebase from "firebase/app";
-import "firebase/firebase-database";
-import 'firebase/firestore';
+
+import "firebase/auth";
+import "firebase/firestore";
+import "firebase/database";
 import firebaseConfig from '../../src/config/fire';
 
 import * as Font from 'expo-font';
@@ -77,7 +79,7 @@ export default class PersonalSearchTab extends Component {
                         this.setState({
                             userInfo: list
                         })
-                        //console.log(this.state.userInfo[0].job[0]);
+                        console.log(this.state.userInfo[0].job[0]);
                     });
 
             }
@@ -122,6 +124,18 @@ export default class PersonalSearchTab extends Component {
         })
     }
 
+    logoutUser = () => {
+        try {
+            firebase.auth().signOut().then(() => {
+                this.props.navigation.navigate('LoadingScreen')
+            })
+        }
+        catch (error) {
+            alert("ID/PW를 다시 확인해주세요")
+        }
+
+    }
+
     render() {
         var user = firebase.auth().currentUser;
         var name;
@@ -131,11 +145,18 @@ export default class PersonalSearchTab extends Component {
         }
 
         return (
-            <ScrollView>
+            <ScrollView style={{ backgroundColor: "#263249" }}>
                 <View style={{ justifyContent: 'space-between' }}>
                     <Text style={styles.user}>안녕하세요 {name} 님</Text>
+                    <Button
+                        title="logout"
+                        style={styles.button_logout}
+                        onPress={() => this.logoutUser()}>
+                        <Text style={styles.button_logout_text}>logout</Text>
+                    </Button>
                     <View style={styles.container}>
-                        <Text style={styles.title_header}>CoWel</Text>
+                        <Image source={require('../../assets/pic2.png')} style={styles.logo} />
+
                         <Text style={styles.header}>사용자 정보 기반 맞춤 복지 검색 페이지입니다.</Text>
                         <Text style={styles.sub}>5분 정도 시간이 소요될 수 있으니 조금만 기다려 주세요!</Text>
                     </View>
@@ -149,40 +170,48 @@ export default class PersonalSearchTab extends Component {
                         </Button>
                     </View>
                 </View>
-                {
-                    this.state.personalData.map(value => {
+                <View>
+                    <Card style={styles.card_style}>
+                        {
+                            this.state.personalData.map(value => {
 
-                        return (
+                                return (
 
-                            <View style={styles.container3}>
-                                <Card style={styles.card_style}>
-                                    <CardItem header>
-                                        <Text style={styles.personalData_text}>서비스명: {value.name}</Text>
-                                    </CardItem>
-                                    <CardItem>
-                                        <Text style={styles.personalData_text}>지원 대상: {value.target}</Text>
-                                    </CardItem>
-                                    <CardItem>
-                                        <Text style={styles.personalData_text}>신청 절차: {value.process}</Text>
-                                    </CardItem>
-                                    <CardItem>
-                                        <Text style={styles.personalData_text}>지원 내용: {value.contents}</Text>
-                                    </CardItem>
-                                    <CardItem>
-                                        <Text style={styles.personalData_text}>구비 서류: {value.documents}</Text>
-                                    </CardItem>
-                                    <CardItem>
-                                        <Text style={styles.personalData_text}>접수기관 전화번호: {value.number}</Text>
-                                    </CardItem>
-                                    <CardItem>
-                                        <Text style={styles.personalData_text}>지원 형태: {value.welfare}</Text>
-                                    </CardItem>
-                                </Card>
-                            </View>
+                                    <View style={styles.container3}>
 
-                        )
-                    })
-                }
+                                        <CardItem header>
+                                            <Text style={styles.personalData_text}>서비스명: {value.name}</Text>
+                                        </CardItem>
+                                        <CardItem>
+                                            <Text style={styles.personalData_text}>지원 대상: {value.target}</Text>
+                                        </CardItem>
+                                        <CardItem>
+                                            <Text style={styles.personalData_text}>신청 절차: {value.process}</Text>
+                                        </CardItem>
+                                        <CardItem>
+                                            <Text style={styles.personalData_text}>지원 내용: {value.contents}</Text>
+                                        </CardItem>
+                                        <CardItem>
+                                            <Text style={styles.personalData_text}>구비 서류: {value.documents}</Text>
+                                        </CardItem>
+                                        <CardItem>
+                                            <Text style={styles.personalData_text}>접수기관 전화번호: {value.number}</Text>
+                                        </CardItem>
+                                        <CardItem>
+                                            <Text style={styles.personalData_text}>지원 형태: {value.welfare}</Text>
+                                        </CardItem>
+                                        <CardItem>
+                                            <Text style={styles.personalData_text}>-----------------------------------------------------------------------------------------------------</Text>
+                                        </CardItem>
+
+                                    </View>
+
+                                )
+                            })
+                        }
+                    </Card>
+                </View>
+
             </ScrollView >
         );
     }
@@ -211,19 +240,34 @@ const styles = StyleSheet.create({
         padding: 10,
         marginTop: 50,
         fontSize: 100,
-        color: 'tomato'
+        color: '#ec1d27'
 
+    },
+    button_logout: {
+        justifyContent: "space-between",
+        alignSelf: "flex-end",
+        backgroundColor: "#263249",
+        marginRight: 10,
+        width: 80
+    },
+    button_logout_text: {
+        color: "white",
+        alignItems: "center",
+        justifyContent: "center",
+        textAlign: 'center',
+        fontFamily: "RIDIBatang",
+        fontSize: 15
     },
     header: {
         fontFamily: 'MapoDPP',
         fontSize: 20,
-        color: 'tomato',
+        color: '#ec1d27',
         marginLeft: '2%'
     },
     sub: {
         fontFamily: 'RIDIBatang',
         fontSize: 17,
-        color: '#5c5c5c',
+        color: 'white',
         marginTop: 10,
         marginLeft: '2%'
     },
@@ -231,7 +275,8 @@ const styles = StyleSheet.create({
         fontFamily: 'RIDIBatang',
         padding: 10,
         alignSelf: "flex-end",
-        marginTop: 10
+        marginTop: 10,
+        color: "white"
     },
     check_button: {
         alignSelf: 'center',
@@ -246,6 +291,7 @@ const styles = StyleSheet.create({
         color: '#5c5c5c'
     },
     card_style: {
+        borderColor: '#ec1d27',
         marginTop: '2%',
         marginLeft: '2%',
         marginRight: '2%',
@@ -253,5 +299,12 @@ const styles = StyleSheet.create({
     },
     personalData_text: {
         fontFamily: 'RIDIBatang',
+    },
+    logo: {
+        justifyContent: "center",
+        alignSelf: "center",
+        width: 650,
+        height: 650,
+        position: "relative"
     }
 });

@@ -1,9 +1,13 @@
 import React from 'react';
+import { Image, StyleSheet, Text, View, ImageBackground } from 'react-native';
 
-import { Platform, StyleSheet, Text, View } from 'react-native';
-import * as firebase from 'firebase';
+import * as firebase from "firebase/app";
+import "firebase/auth";
+import "firebase/firestore";
 
 import * as Font from 'expo-font';
+import { LinearGradient } from 'expo-linear-gradient';
+import { BlurView } from 'expo-blur';
 import { Button, Container, Content, Header, Form, Input, Item, Label } from 'native-base';
 
 export default class Loading extends React.Component {
@@ -33,9 +37,12 @@ export default class Loading extends React.Component {
 
     render() {
         return (
-            <View style={styles.container}>
+
+            <ImageBackground source={require("../assets/background.jpg")} style={styles.bgImage}>
+
+
                 <View style={styles.halfContainer}>
-                    <Text style={styles.title_header}>CoWel</Text>
+                    <Image source={require('../assets/pic2.png')} style={styles.logo} />
                     <Text style={styles.text_title}>COVID19 특별 복지 알리미</Text>
                     <Text style={styles.text_subtitle}>맞춤 검색을 통해 본인에게 알맞는 복지를 찾아보세요.</Text>
                     <View style={styles.halfContainer}>
@@ -50,7 +57,10 @@ export default class Loading extends React.Component {
 
                     </View>
                 </View>
-            </View >
+
+
+            </ImageBackground >
+
         );
     }
 }
@@ -70,30 +80,31 @@ const styles = StyleSheet.create({
         fontFamily: 'MapoDPP',
         padding: 10,
         marginTop: 50,
-        fontSize: 80,
-        color: 'tomato'
+        fontSize: 140,
+        color: '#ec1d27',
+        borderColor: '#140a00'
 
     },
     text_title: {
         padding: 20,
         marginTop: 20,
         fontFamily: 'MapoDPP',
-        fontSize: 32,
+        fontSize: 40,
         textAlign: "center",
-        color: '#5c5c5c'
+        color: '#140a00'
     },
     text_subtitle: {
         fontFamily: 'MapoDPP',
-        fontSize: 20,
+        fontSize: 40,
         textAlign: "center",
-        color: '#5c5c5c'
+        color: '#140a00'
     },
     start_button: {
         alignSelf: 'center',
         justifyContent: 'center',
         width: 200,
         height: 50,
-        backgroundColor: 'tomato'
+        backgroundColor: '#ec1d27'
     },
     start_text: {
         fontFamily: 'RIDIBatang',
@@ -101,6 +112,16 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "center",
         color: "white"
-    }
+    },
+    bgImage: {
+        position: "relative",
+        width: '100%',
+        height: '100%',
 
+    },
+    logo: {
+        width: "60%",
+        height: "60%",
+        position: "relative"
+    }
 })

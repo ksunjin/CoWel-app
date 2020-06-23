@@ -1,15 +1,17 @@
-import '../shim';
+//import '../shim';
 import React, { Component } from 'react';
-import { StyleSheet, View, Text } from 'react-native';
-
-//import * as firebase from 'firebase';
+import { StyleSheet, View, Text, Image } from 'react-native';
+import "../src/config/watson";
 import * as firebase from "firebase/app";
+
 import "firebase/auth";
+import "firebase/firestore";
+import "firebase/database";
 import config from '../src/config/publicData';
 
 import * as Font from 'expo-font';
 import { ScrollView } from 'react-native-gesture-handler';
-import { Card, Grid, Col, Thumbnail, Body, Left, Right, Button, Icon } from 'native-base';
+import { Card, Button } from 'native-base';
 
 const axios = require('axios');
 const cheerio = require('cheerio');
@@ -75,7 +77,7 @@ export default class MainScreen extends Component {
         var DOMParser = require('react-native-html-parser').DOMParser;
 
         const API_STEM = "http://openapi.data.go.kr/openapi/service/rest/Covid19/getCovid19SidoInfStateJson"
-        var url = `${API_STEM}?serviceKey=${config}&pageNo=1&numOfRows=10&startCreateDt=20200618&endCreateDt=20200618`;
+        var url = `${API_STEM}?serviceKey=${config}&pageNo=1&numOfRows=10&startCreateDt=20200623&endCreateDt=20200623`;
 
         let list = [];
         let temp = null;
@@ -137,7 +139,7 @@ export default class MainScreen extends Component {
             })
         }
         catch (error) {
-            alert(error)
+            alert("ID/PW를 다시 확인해주세요")
         }
 
     }
@@ -151,22 +153,21 @@ export default class MainScreen extends Component {
         }
 
         return (
-            <ScrollView>
+            <ScrollView style={{ backgroundColor: "#263249" }}>
                 <View style={{ justifyContent: 'space-between' }}>
                     <Text style={styles.user}>안녕하세요 {name} 님</Text>
+
                     <Button
                         title="logout"
                         style={styles.button_logout}
                         onPress={() => this.logoutUser()}>
                         <Text style={styles.button_logout_text}>logout</Text>
                     </Button>
-                    <View style={styles.container}>
-                        <Text style={styles.header}>CoWel</Text>
-                    </View>
+                    <Image source={require('../assets/pic2.png')} style={styles.logo} />
                 </View>
 
 
-                <Card>
+                <Card style={styles.card_style}>
                     <View style={styles.secondContainer}>
                         <Text style={styles.sub}> COVID19 NEWS </Text>
                         {
@@ -174,10 +175,15 @@ export default class MainScreen extends Component {
                                 return (
                                     <View style={styles.thirdContainer}>
 
-                                        <Text style={styles.covid_news}> 지역: {value.si} -></Text>
-                                        <Text style={styles.covid_news}> 확진자 전일 대비 증감 수: {value.incDec}</Text>
-
-                                        <Text>{`\n`}</Text>
+                                        <div>
+                                            <span>
+                                                <Text style={styles.covid_news}> 지역: {value.si} -></Text>
+                                                <Text style={styles.covid_news}> 확진자 전일 대비 증감 수: {value.incDec}</Text>
+                                            </span>
+                                            <div>
+                                                <Text>{`\n`}</Text>
+                                            </div>
+                                        </div>
 
                                     </View>
                                 )
@@ -192,13 +198,19 @@ export default class MainScreen extends Component {
                                     return (
 
                                         <View style={styles.thirdContainer}>
+                                            <div>
+                                                <span>
+                                                    <Text style={styles.covid_news}> 업종: {item.kinds} -></Text>
+                                                    <Text style={styles.covid_news}> 브랜드: {item.brands}</Text>
+                                                </span>
+                                                <div>
+                                                    <Text>{`\n`}</Text>
+                                                </div>
 
-                                            <Text style={styles.covid_news}> 업종: {item.kinds} -></Text>
-                                            <Text style={styles.covid_news}> 브랜드: {item.brands}</Text>
-
-                                            <Text>{`\n`}</Text>
+                                            </div>
 
                                         </View>
+
                                     )
                                 })
                             }
@@ -216,19 +228,21 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        color: '#263249'
     },
     header: {
         fontFamily: 'MapoDPP',
         padding: 10,
         marginTop: 50,
         fontSize: 100,
-        color: 'tomato'
+        color: '#ec1d27'
 
     },
     sub: {
         fontFamily: 'RIDIBatang',
         marginTop: 20,
+        padding: 10,
         fontSize: 30,
         color: '#5c5c5c',
 
@@ -237,17 +251,18 @@ const styles = StyleSheet.create({
         fontFamily: 'RIDIBatang',
         padding: 10,
         alignSelf: "flex-end",
-        marginTop: 10
+        marginTop: 10,
+        color: "white"
     },
     button_logout: {
         justifyContent: "space-between",
         alignSelf: "flex-end",
-        backgroundColor: "#efefef",
-        marginRight: 30,
-        width: 50
+        backgroundColor: "#263249",
+        marginRight: 10,
+        width: 80
     },
     button_logout_text: {
-        color: "#5c5c5c",
+        color: "white",
         alignItems: "center",
         justifyContent: "center",
         textAlign: 'center',
@@ -262,8 +277,19 @@ const styles = StyleSheet.create({
     thirdContainer: {
         marginLeft: 10
     },
+    card_style: {
+        borderColor: '#ec1d27',
+        borderRadius: 10
+    },
     covid_news: {
         fontFamily: 'RIDIBatang',
+        fontSize: 15
+    },
+    logo: {
+        justifyContent: "center",
+        alignSelf: "center",
+        width: 650,
+        height: 650,
+        position: "relative"
     }
-
 });

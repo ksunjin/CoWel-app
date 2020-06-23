@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text, Picker } from 'react-native';
+import { StyleSheet, View, Text, Image, ImageBackground } from 'react-native';
 
 import * as firebase from "firebase/app";
-import "firebase/firebase-database";
+
+// Add the Firebase products that you want to use
+import "firebase/auth";
+import "firebase/firestore";
+import "firebase/database";
 import firebaseConfig from '../src/config/fire';
 
 import * as Font from 'expo-font';
@@ -110,79 +114,92 @@ export default class SetProfile extends Component {
         }
     }
 
+    logoutUser = () => {
+        try {
+            firebase.auth().signOut().then(() => {
+                this.props.navigation.navigate('LoadingScreen')
+            })
+        }
+        catch (error) {
+            alert(error)
+        }
+
+    }
+
     render() {
-
         return (
-
             <ScrollView>
-                <Container styles={styles.container}>
-                    <Text style={styles.title_header}>
-                        CoWel
+                <ImageBackground source={require("../assets/background.jpg")} style={styles.bgImage}>
+
+                    <View styles={styles.container}>
+                        <Image source={require('../assets/pic2.png')} style={styles.logo} />
+
+                        <Text style={styles.title}>
+                            SetProfile
                         </Text>
-                    <Text style={styles.title}>
-                        SetProfile
+                        <Text style={styles.subtitle}>
+                            CoWel 어플리케이션 사용을 위한 개인정보 입력 폼입니다. 추후, 맞춤 검색 시 사용됩니다.
                         </Text>
-                    <Text style={styles.subtitle}>
-                        CoWel 어플리케이션 사용을 위한 개인정보 입력 폼입니다. 추후, 맞춤 검색 시 사용됩니다.
-                        </Text>
-                    <Form>
-                        <Item floatingLabel>
-                            <Label style={{ fontFamily: 'RIDIBatang' }}>나이</Label>
-                            <Input
-                                onChangeText={(age) => this.setState({ age })}
-                                style={styles.form}>
-                            </Input>
-                        </Item>
+                        <Form>
+                            <Item floatingLabel>
+                                <Label style={{ fontFamily: 'RIDIBatang' }}>나이</Label>
+                                <Input
+                                    onChangeText={(age) => this.setState({ age })}
+                                    style={styles.form}>
+                                </Input>
+                            </Item>
 
-                        <Item floatingLabel>
-                            <Label style={{ fontFamily: 'RIDIBatang' }}>주소 (시군구)</Label>
-                            <Input
-                                onChangeText={(address) => this.setState({ address })}
-                                style={styles.form}>
-                            </Input>
-                        </Item>
+                            <Item floatingLabel>
+                                <Label style={{ fontFamily: 'RIDIBatang' }}>주소 (시군구)</Label>
+                                <Input
+                                    onChangeText={(address) => this.setState({ address })}
+                                    style={styles.form}>
+                                </Input>
+                            </Item>
 
-                        <Item floatingLabel>
-                            <Label style={{ fontFamily: 'RIDIBatang' }}>소득분위</Label>
-                            <Input
-                                onChangeText={(Quintile) => this.setState({ Quintile })}
-                                style={styles.form}>
-                            </Input>
-                        </Item>
+                            <Item floatingLabel>
+                                <Label style={{ fontFamily: 'RIDIBatang' }}>소득분위</Label>
+                                <Input
+                                    onChangeText={(Quintile) => this.setState({ Quintile })}
+                                    style={styles.form}>
+                                </Input>
+                            </Item>
 
-                        <Item floatingLabel>
-                            <Label style={{ fontFamily: 'RIDIBatang' }}>성별</Label>
-                            <Input
-                                onChangeText={(gender) => this.setState({ gender })}
-                                style={styles.form}>
-                            </Input>
-                        </Item>
-                        <Item floatingLabel>
-                            <Label style={{ fontFamily: 'RIDIBatang' }}>가구 수</Label>
-                            <Input
-                                onChangeText={(family) => this.setState({ family })}
-                                style={styles.form}>
-                            </Input>
-                        </Item>
-                        <Text style={{ fontFamily: 'RIDIBatang', color: '#575757', fontSize: 17, marginTop: 15, marginLeft: 15 }}>자녀 여부</Text>
-                        <RadioGroup
-                            radioButtons={this.state.profile.child} onPress={this.onPress2} flexDirection="row"
-                            style={{ fontFamily: 'RIDIBatang', justifyContent: 'space-between', marginLeft: 20, marginTop: 20 }} />
+                            <Item floatingLabel>
+                                <Label style={{ fontFamily: 'RIDIBatang' }}>성별</Label>
+                                <Input
+                                    onChangeText={(gender) => this.setState({ gender })}
+                                    style={styles.form}>
+                                </Input>
+                            </Item>
+                            <Item floatingLabel>
+                                <Label style={{ fontFamily: 'RIDIBatang' }}>가구 수</Label>
+                                <Input
+                                    onChangeText={(family) => this.setState({ family })}
+                                    style={styles.form}>
+                                </Input>
+                            </Item>
+                            <Text style={{ fontFamily: 'RIDIBatang', color: '#575757', fontSize: 17, marginTop: 15, marginLeft: 15 }}>자녀 여부</Text>
+                            <RadioGroup
+                                radioButtons={this.state.profile.child} onPress={this.onPress2} flexDirection="row"
+                                style={{ fontFamily: 'RIDIBatang', justifyContent: 'space-between', marginLeft: 20, marginTop: 20 }} />
 
-                        <Text style={{ fontFamily: 'RIDIBatang', color: '#575757', fontSize: 17, marginTop: 15, marginLeft: 15 }}>직업</Text>
-                        <RadioGroup
-                            radioButtons={this.state.profile.job} onPress={this.onPress} flexDirection="row"
-                            style={{ fontFamily: 'RIDIBatang', justifyContent: 'space-between', marginLeft: 20, marginTop: 20 }} />
-                        <Button
-                            title="save"
-                            style={styles.button_ok}
-                            rounded
-                            backgroundColor='tomato'
-                            onPress={() => this.addProfile(this.state.age, this.state.address, this.state.Quintile, this.state.gender, this.state.family)}>
-                            <Text style={styles.button_text}>저장</Text>
-                        </Button>
-                    </Form>
-                </Container>
+                            <Text style={{ fontFamily: 'RIDIBatang', color: '#575757', fontSize: 17, marginTop: 15, marginLeft: 15 }}>직업</Text>
+                            <RadioGroup
+                                radioButtons={this.state.profile.job} onPress={this.onPress} flexDirection="row"
+                                style={{ fontFamily: 'RIDIBatang', justifyContent: 'space-between', marginLeft: 20, marginTop: 20 }} />
+                            <Button
+                                title="save"
+                                style={styles.button_ok}
+                                rounded
+                                backgroundColor='#ec1d27'
+                                onPress={() => this.addProfile(this.state.age, this.state.address, this.state.Quintile, this.state.gender, this.state.family)}>
+                                <Text style={styles.button_text}>저장</Text>
+                            </Button>
+                        </Form>
+                    </View>
+
+                </ImageBackground>
             </ScrollView>
         );
 
@@ -199,7 +216,8 @@ const styles = StyleSheet.create({
         fontFamily: 'RIDIBatang',
         padding: 10,
         alignSelf: "flex-end",
-        marginTop: 10
+        marginTop: 10,
+        color: "white"
     },
     title_header: {
         fontFamily: 'MapoDPP',
@@ -207,18 +225,18 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         textAlign: 'center',
         marginTop: 50,
-        color: "tomato"
+        color: "#ec1d27"
     },
     title: {
         fontFamily: 'RIDIBatang',
-        fontSize: 20,
+        fontSize: 25,
         justifyContent: 'center',
         textAlign: 'center',
         marginTop: 50
     },
     subtitle: {
         fontFamily: 'RIDIBatang',
-        fontSize: 15,
+        fontSize: 20,
         justifyContent: 'center',
         textAlign: 'center',
         marginTop: 10
@@ -244,6 +262,34 @@ const styles = StyleSheet.create({
         width: 200,
         alignSelf: "center",
         justifyContent: "center",
-        backgroundColor: "tomato"
+        backgroundColor: "#ec1d27"
     },
+    button_logout: {
+        justifyContent: "space-between",
+        alignSelf: "flex-end",
+        backgroundColor: "#ffeaff",
+        marginRight: 10,
+        width: 80
+    },
+    button_logout_text: {
+        color: "#5c5c5c",
+        alignItems: "center",
+        justifyContent: "center",
+        textAlign: 'center',
+        fontFamily: "RIDIBatang",
+        fontSize: 15
+    },
+    bgImage: {
+        position: "relative",
+        width: '100%',
+        height: '100%',
+
+    },
+    logo: {
+        justifyContent: "center",
+        alignSelf: "center",
+        width: "40%",
+        height: "40%",
+        position: "relative"
+    }
 })
