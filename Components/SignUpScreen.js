@@ -6,8 +6,6 @@ import "firebase/auth";
 import "firebase/firestore";
 import firebaseConfig from '../src/config/fire';
 
-import { ToastsContainer, ToastsStore } from 'react-toasts';
-
 import * as Font from 'expo-font';
 import { Button, Container, Form, Input, Item, Label } from 'native-base';
 
@@ -41,7 +39,7 @@ export default class SignUp extends React.Component {
     signUpUser = (email, password, displayName) => {
         try {
             if (this.state.password.length < 6) {
-                ToastsStore.warning("회원가입에 실패하였습니다. 비밀번호를 6자리 이상 입력해주세요");
+                alert("회원가입에 실패하였습니다. 비밀번호를 6자리 이상 입력해주세요");
                 return;
             }
             firebase.auth().createUserWithEmailAndPassword(email, password).then((userInfo) => {

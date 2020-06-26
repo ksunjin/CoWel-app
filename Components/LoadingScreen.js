@@ -6,9 +6,7 @@ import "firebase/auth";
 import "firebase/firestore";
 
 import * as Font from 'expo-font';
-import { LinearGradient } from 'expo-linear-gradient';
-import { BlurView } from 'expo-blur';
-import { Button, Container, Content, Header, Form, Input, Item, Label } from 'native-base';
+import { Button } from 'native-base';
 
 export default class Loading extends React.Component {
     componentDidMount() {
@@ -83,7 +81,6 @@ const styles = StyleSheet.create({
         fontSize: 140,
         color: '#ec1d27',
         borderColor: '#140a00'
-
     },
     text_title: {
         padding: 20,
@@ -114,14 +111,17 @@ const styles = StyleSheet.create({
         color: "white"
     },
     bgImage: {
-        position: "relative",
+        position: "absolute",
         width: '100%',
         height: '100%',
-
+        left: 0,
+        right: 0
     },
     logo: {
-        width: "60%",
-        height: "60%",
+        justifyContent: "center",
+        alignSelf: "center",
+        width: "40%",
+        height: "40%",
         position: "relative"
     }
 })

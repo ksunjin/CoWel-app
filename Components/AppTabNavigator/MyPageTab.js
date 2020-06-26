@@ -8,7 +8,7 @@ import firebaseConfig from '../../src/config/fire';
 
 import '../../src/config/style.css'
 import * as Font from 'expo-font';
-import { Button, Container, Form, Input, Item, Label } from 'native-base';
+import { Button } from 'native-base';
 import { ScrollView } from 'react-native-gesture-handler';
 
 if (!firebase.apps.length) {
@@ -156,7 +156,6 @@ const styles = StyleSheet.create({
         marginTop: 20,
         fontSize: 80,
         color: '#ec1d27'
-
     },
     header: {
         fontFamily: 'MapoDPP',

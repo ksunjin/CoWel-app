@@ -2,15 +2,13 @@ import React, { Component } from 'react';
 import { StyleSheet, View, Text, Image, ImageBackground } from 'react-native';
 
 import * as firebase from "firebase/app";
-
-// Add the Firebase products that you want to use
 import "firebase/auth";
 import "firebase/firestore";
 import "firebase/database";
 import firebaseConfig from '../src/config/fire';
 
 import * as Font from 'expo-font';
-import { Button, Container, Form, Input, Item, Label } from 'native-base';
+import { Button, Form, Input, Item, Label } from 'native-base';
 import RadioGroup from 'react-native-radio-buttons-group';
 import { ScrollView } from 'react-native-gesture-handler';
 
@@ -283,7 +281,6 @@ const styles = StyleSheet.create({
         position: "relative",
         width: '100%',
         height: '100%',
-
     },
     logo: {
         justifyContent: "center",

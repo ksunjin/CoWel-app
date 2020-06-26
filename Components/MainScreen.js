@@ -1,4 +1,4 @@
-//import '../shim';
+//import '../shim'; android 
 import React, { Component } from 'react';
 import { StyleSheet, View, Text, Image } from 'react-native';
 import "../src/config/watson";
@@ -73,7 +73,6 @@ export default class MainScreen extends Component {
     }
 
     fetchData() {
-        //const parseString = require('react-native-xml2js').parseString;
         var DOMParser = require('react-native-html-parser').DOMParser;
 
         const API_STEM = "http://openapi.data.go.kr/openapi/service/rest/Covid19/getCovid19SidoInfStateJson"
@@ -96,7 +95,6 @@ export default class MainScreen extends Component {
                         var item = nodeList[j];
 
                         if (item.firstChild) {
-                            //console.log(item.nodeName + " : " + item.childNodes[0].nodeValue);
                             if ((item.nodeName) == ("gubun")) {
                                 temp = item.childNodes[0].nodeValue;
 
@@ -237,7 +235,6 @@ const styles = StyleSheet.create({
         marginTop: 50,
         fontSize: 100,
         color: '#ec1d27'
-
     },
     sub: {
         fontFamily: 'RIDIBatang',
@@ -245,7 +242,6 @@ const styles = StyleSheet.create({
         padding: 10,
         fontSize: 30,
         color: '#5c5c5c',
-
     },
     user: {
         fontFamily: 'RIDIBatang',

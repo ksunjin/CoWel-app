@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { StyleSheet, View, Text, Image } from 'react-native';
 
 import * as firebase from "firebase/app";
-
 import "firebase/auth";
 import "firebase/firestore";
 import "firebase/database";
@@ -10,7 +9,7 @@ import firebaseConfig from '../../src/config/fire';
 
 import * as Font from 'expo-font';
 import Constants from 'expo-constants';
-import { Card, CardItem, Thumbnail, Body, Left, Right, Button, Icon, Item } from 'native-base';
+import { Card, CardItem, Button } from 'native-base';
 import { ScrollView } from 'react-native-gesture-handler';
 
 var dataTemp = [];
@@ -41,7 +40,6 @@ export default class PersonalSearchTab extends Component {
         const ref = firebase.database().ref();
         ref.on('value', snapshot => {
             this.setState({ data: snapshot.val() });
-            //console.log(Object.values(this.state.data[0].지원대상).join(" "));
             for (var i = 0; i < this.state.data.length; i++) {
                 dataTemp.push({
                     id: i,
@@ -241,7 +239,6 @@ const styles = StyleSheet.create({
         marginTop: 50,
         fontSize: 100,
         color: '#ec1d27'
-
     },
     button_logout: {
         justifyContent: "space-between",

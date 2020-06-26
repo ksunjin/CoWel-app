@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text, Image } from 'react-native';
+import { StyleSheet, Text, Image } from 'react-native';
 
 import * as firebase from "firebase/app";
-
-// Add the Firebase products that you want to use
 import "firebase/auth";
 import "firebase/firestore";
 import "firebase/database";
@@ -91,6 +89,9 @@ const styles = StyleSheet.create({
         flexGrow: 1,
         marginTop: Constants.statusBarHeight,
     },
+    scrollView: {
+        marginHorizontal: 20,
+    },
     header: {
         fontFamily: 'MapoDPP',
         padding: 10,
@@ -98,7 +99,6 @@ const styles = StyleSheet.create({
         fontSize: 100,
         marginLeft: '2%',
         color: '#ec1d27'
-
     },
     sub: {
         fontSize: 20,
@@ -107,9 +107,6 @@ const styles = StyleSheet.create({
         marginLeft: '2%',
         padding: 10,
         color: "white"
-    },
-    scrollView: {
-        marginHorizontal: 20,
     },
     card_style: {
         marginTop: '2%',

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Image, StyleSheet, Text, View, TextInput, ImageBackground } from 'react-native';
+import { Image, StyleSheet, Text, ImageBackground } from 'react-native';
 
 import * as firebase from "firebase/app";
 
@@ -110,7 +110,6 @@ const styles = StyleSheet.create({
         padding: 10,
         fontSize: 80,
         color: '#ec1d27',
-
     },
     container: {
         flex: 1,
@@ -153,7 +152,6 @@ const styles = StyleSheet.create({
         height: '100%',
         left: 0,
         right: 0
-
     },
     logo: {
         justifyContent: "center",
